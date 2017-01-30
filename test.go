@@ -52,27 +52,27 @@ func main() {
 
 	startx := 26
 	starty := 2
-	mybox := box.NewFrame(startx, starty, 19, 7, tl.ColorRed, tl.ColorWhite, box.FrameSingleBorder, true)
+	mybox := box.NewFrame(startx, starty, 19, 7, tl.ColorRed, tl.ColorWhite, box.LineSingleBorder, true)
 	mybox.SetTitle("Sign mode", box.AlignCenter)
 	level.AddEntity(mybox)
 
 	starty = starty+8
-	mybox = box.NewFrame(startx, starty, 19, 7, tl.ColorMagenta, tl.ColorWhite, box.FrameSingleBorder, false)
+	mybox = box.NewFrame(startx, starty, 19, 7, tl.ColorMagenta, tl.ColorWhite, box.LineSingleBorder, false)
 	mybox.SetTitle(" Single border ", box.AlignHCenter)
 	level.AddEntity(mybox)
 
 	starty = starty+8
-	mybox = box.NewFrame(startx, starty, 19, 7, tl.ColorBlue, tl.ColorWhite, box.FrameDoubleBorder, false)
+	mybox = box.NewFrame(startx, starty, 19, 7, tl.ColorBlue, tl.ColorWhite, box.LineDoubleBorder, false)
 	mybox.SetTitle(" Double border ", box.AlignHCenter)
 	level.AddEntity(mybox)
 
 	startx = 0
 	starty = 2
-	mybox = box.NewFrame(startx, starty, 24, 23, tl.RgbTo256Color(120,120,120), tl.ColorWhite, box.FrameDoubleBorder, false)
+	mybox = box.NewFrame(startx, starty, 24, 23, tl.RgbTo256Color(120,120,120), tl.ColorWhite, box.LineDoubleBorder, false)
 	mybox.SetTitle(" Double border ", box.AlignHCenter)
 	level.AddEntity(mybox)
 
-	myhline := box.NewHLine(startx+1, starty+5,22,tl.RgbTo256Color(120,120,120), tl.ColorWhite,'─')
+	myhline := box.NewHLine(startx+1, starty+5,22,tl.RgbTo256Color(120,120,120), tl.ColorWhite,box.LineSingleBorder)
 	level.AddEntity(myhline)
 
 	mytext := box.NewTextArea(startx+1, starty,22,5, "This is a first text",tl.RgbTo256Color(120,120,120), tl.ColorWhite,box.AlignCenter)
