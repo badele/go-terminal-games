@@ -80,6 +80,14 @@ func main() {
 	mytext = box.NewTextArea(startx+1, starty+1,22,5, "This is another text",tl.RgbTo256Color(120,120,120), tl.ColorWhite,box.AlignCenter)
 	level.AddEntity(mytext)
 
+	player := Player{
+		Entity: tl.NewEntity(1, 1, 1, 1),
+		level:  level,
+	}
+	// Set the character at position (0, 0) on the entity.
+	player.SetCell(0, 0, &tl.Cell{Fg: tl.ColorRed, Ch: '옷'})
+	level.AddEntity(&player)
+
 	game.Screen().SetLevel(level)
 	game.Start()
 }
