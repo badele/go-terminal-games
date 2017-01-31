@@ -81,10 +81,10 @@ func main() {
 	level.AddEntity(myhline)
 
 	mytext := box.NewTextArea(startx+1, starty,22,5, "This is a first text",tl.RgbTo256Color(120,120,120), tl.ColorWhite,box.AlignCenter)
-	mytext.LevelFollow(level)
+	//mytext.LevelFollow(level)
 	level.AddEntity(mytext)
 	mytext = box.NewTextArea(startx+1, starty+1,22,5, "This is another text",tl.RgbTo256Color(120,120,120), tl.ColorWhite,box.AlignCenter)
-	mytext.LevelFollow(level)
+	//mytext.LevelFollow(level)
 	level.AddEntity(mytext)
 
 	player := Player{
