@@ -50,41 +50,35 @@ func main() {
 		Ch: ' ',
 	})
 
-	startx := 26
-	starty := 2
-	mybox := box.NewFrame(startx, starty, 19, 7, tl.ColorRed, tl.ColorWhite, box.LineSingleBorder, true)
-	mybox.SetTitle("Sign mode", box.AlignCenter)
+	//termx, termy := game.InitialTermSize()
+	//termx, termy := 194,61
+	termx, termy := 80,25
+
+	boxtextheight := 8
+	clockwidth := 30
+	clockheight := 12
+
+	mybox := box.NewFrame(termx - clockwidth, 0, clockwidth, clockheight, tl.ColorBlue, tl.ColorWhite, box.LineDoubleBorder, false)
+	mybox.SetTitle(" Inventory ", box.AlignHCenter)
 	mybox.LevelFollow(level)
 	level.AddEntity(mybox)
 
-	starty = starty+8
-	mybox = box.NewFrame(startx, starty, 19, 7, tl.ColorMagenta, tl.ColorWhite, box.LineSingleBorder, false)
-	mybox.SetTitle(" Single border ", box.AlignHCenter)
+	posy := clockheight
+	width := 30
+	mybox = box.NewFrame(termx - width, posy, width, termy - posy - boxtextheight, tl.ColorBlue, tl.ColorWhite, box.LineDoubleBorder, false)
+	mybox.SetTitle(" Other ", box.AlignHCenter)
 	mybox.LevelFollow(level)
 	level.AddEntity(mybox)
 
-	starty = starty+8
-	mybox = box.NewFrame(startx, starty, 19, 7, tl.ColorBlue, tl.ColorWhite, box.LineDoubleBorder, false)
-	mybox.SetTitle(" Double border ", box.AlignHCenter)
+	mybox = box.NewFrame(0, termy-boxtextheight, termx, boxtextheight, tl.ColorBlue, tl.ColorWhite, box.LineDoubleBorder, false)
+	mybox.SetTitle(" Chat ", box.AlignHCenter)
 	mybox.LevelFollow(level)
 	level.AddEntity(mybox)
 
-	startx = 0
-	starty = 2
-	mybox = box.NewFrame(startx, starty, 24, 23, tl.RgbTo256Color(120,120,120), tl.ColorWhite, box.LineDoubleBorder, false)
-	mybox.SetTitle(" Double border ", box.AlignHCenter)
-	mybox.LevelFollow(level)
-	level.AddEntity(mybox)
-
-	myhline := box.NewHLine(startx+1, starty+5,22,tl.RgbTo256Color(120,120,120), tl.ColorWhite,box.LineSingleBorder)
-	myhline.LevelFollow(level)
-	level.AddEntity(myhline)
-
-	mytext := box.NewTextArea(startx+1, starty,22,5, "This is a first text",tl.RgbTo256Color(120,120,120), tl.ColorWhite,box.AlignCenter)
-	//mytext.LevelFollow(level)
-	level.AddEntity(mytext)
-	mytext = box.NewTextArea(startx+1, starty+1,22,5, "This is another text",tl.RgbTo256Color(120,120,120), tl.ColorWhite,box.AlignCenter)
-	//mytext.LevelFollow(level)
+	mytext := box.NewTextArea(1, termy-boxtextheight+1,termx-2,termy-2, "",tl.ColorBlue, tl.ColorWhite,box.AlignNone)
+	mytext.SetTypewriterDuration(100)
+	mytext.SetText("This story takes place in the year 3000, You have a spacecraft for navigate",box.AlignNone)
+	mytext.LevelFollow(level)
 	level.AddEntity(mytext)
 
 	player := Player{
